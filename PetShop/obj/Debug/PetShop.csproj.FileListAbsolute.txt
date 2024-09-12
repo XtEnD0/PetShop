@@ -43,3 +43,5 @@ C:\Users\lisav\Desktop\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\PetShop_Conten
 C:\Users\lisav\Desktop\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\PetShop.csproj.CopyComplete
 C:\Users\lisav\Desktop\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\Pages\Page1.g.cs
 C:\Users\lisav\Desktop\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\Pages\Page1.baml
+C:\Users\lisav\Desktop\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\Pages\ProductPage.g.cs
+C:\Users\lisav\Desktop\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\Pages\ProductPage.baml

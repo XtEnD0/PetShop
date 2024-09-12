@@ -23,6 +23,7 @@ namespace PetShop.Pages
         public LoginPage()
         {
             InitializeComponent();
+            
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
@@ -55,13 +56,13 @@ namespace PetShop.Pages
                     switch (user.Role.RoleName)
                     {
                         case "Администратор":
-                            Classes.Manager.MainFrame.Navigate(new Pages.Page1());
+                            Classes.Manager.MainFrame.Navigate(new Pages.ProductPage());
                             break;
                         case "Клиент":
-                            Classes.Manager.MainFrame.Navigate(new Pages.Page1());
+                            Classes.Manager.MainFrame.Navigate(new Pages.ProductPage());
                             break;
                         case "Менеджер":
-                            Classes.Manager.MainFrame.Navigate(new Pages.Page1());
+                            Classes.Manager.MainFrame.Navigate(new Pages.ProductPage());
                             break;
 
                     }
@@ -81,7 +82,7 @@ namespace PetShop.Pages
 
         private void GuestButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Classes.Manager.MainFrame.Navigate(new Pages.ProductPage());
         }
     }
 }
