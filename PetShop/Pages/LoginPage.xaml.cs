@@ -25,53 +25,146 @@ namespace PetShop.Pages
             InitializeComponent();
             
         }
+        public int FailedAttempts = 0;
 
+        private Dictionary<string, string> captchaCodes = new Dictionary<string, string>
+        {
+            {"/Checks/captcha1.png", "b16i9"},
+            {"/Checks/captcha2.png", "f456pt"},
+            {"/Checks/captcha3.png", "wq987z"}
+        };
+        private string CurrentCaptchaCode;
+        private void LoadRandomCaptcha()
+        {
+            Random random = new Random();
+            int index = random.Next(captchaCodes.Count);
+            string selectedCaptcha = new List<string>(captchaCodes.Keys)[index];
+            CaptchaImage.Source = new BitmapImage(new Uri(selectedCaptcha, UriKind.Relative));
+            CurrentCaptchaCode = captchaCodes[selectedCaptcha];
+        }
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                StringBuilder errors = new StringBuilder();
-                if (string.IsNullOrEmpty(LoginTextBox.Text))
+                if (FailedAttempts < 2)
                 {
-                    errors.AppendLine("Введите Логин");
-                }
-
-                if (string.IsNullOrEmpty(PasswordBox.Password))
-                {
-                    errors.AppendLine("Введите Пароль");
-                }
-                if (errors.Length > 0)
-                {
-                    MessageBox.Show(errors.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                }   
-                if (Data.PetShopEntities.GetContext().Users
-                    .Any(d => d.UserLogin == LoginTextBox.Text &&
-                    d.UserPassword == PasswordBox.Password))
-                {
-                    var user = Data.PetShopEntities.GetContext().Users
-                        .Where(d => d.UserLogin == LoginTextBox.Text 
-                        && d.UserPassword == PasswordBox.Password).FirstOrDefault();
-                    MessageBox.Show("Успех!", "Вы вошли в учетную запись", MessageBoxButton.OK, MessageBoxImage.Information);
-                    switch (user.Role.RoleName)
+                    StringBuilder errors = new StringBuilder();
+                    if (string.IsNullOrEmpty(LoginTextBox.Text))
                     {
-                        case "Администратор":
-                            Classes.Manager.MainFrame.Navigate(new Pages.ProductPage());
-                            break;
-                        case "Клиент":
-                            Classes.Manager.MainFrame.Navigate(new Pages.ProductPage());
-                            break;
-                        case "Менеджер":
-                            Classes.Manager.MainFrame.Navigate(new Pages.ProductPage());
-                            break;
+                        errors.AppendLine("Введите Логин");
+                    }
 
+                    if (string.IsNullOrEmpty(PasswordBox.Password))
+                    {
+                        errors.AppendLine("Введите Пароль");
+                    }
+                    if (errors.Length > 0)
+                    {
+                        MessageBox.Show(errors.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                    if (Data.PetShopEntities.GetContext().Users
+                        .Any(d => d.UserLogin == LoginTextBox.Text &&
+                        d.UserPassword == PasswordBox.Password))
+                    {
+                        var user = Data.PetShopEntities.GetContext().Users
+                            .Where(d => d.UserLogin == LoginTextBox.Text
+                            && d.UserPassword == PasswordBox.Password).FirstOrDefault();
+                        Classes.Manager.CurrentUser = user;
+                        MessageBox.Show("Успех!", "Вы вошли в учетную запись", MessageBoxButton.OK, MessageBoxImage.Information);
+                        switch (user.Role.RoleName)
+                        {
+                            case "Администратор":
+                                Classes.Manager.MainFrame.Navigate(new Pages.ProductPage());
+                                break;
+                            case "Клиент":
+                                Classes.Manager.MainFrame.Navigate(new Pages.ProductPage());
+                                break;
+                            case "Менеджер":
+                                Classes.Manager.MainFrame.Navigate(new Pages.ProductPage());
+                                break;
+
+                        }
+                    }
+                    else
+                    {
+                        FailedAttempts++;
+                        MessageBox.Show("Неверный логин или пароль ", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        if (FailedAttempts > 1)
+                        {
+                            LoadRandomCaptcha();
+                            CaptchaImage.Visibility = Visibility.Visible;
+                            CaptchaInput.Visibility = Visibility.Visible;
+                        }
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Неверный логин или пароль", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                    StringBuilder errors = new StringBuilder();
+                    if (string.IsNullOrEmpty(LoginTextBox.Text))
+                    {
+                        errors.AppendLine("Введите Логин");
+                    }
 
+                    if (string.IsNullOrEmpty(PasswordBox.Password))
+                    {
+                        errors.AppendLine("Введите Пароль");
+                    }
+                    if (errors.Length > 0)
+                    {
+                        MessageBox.Show(errors.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                    if (Data.PetShopEntities.GetContext().Users
+                        .Any(d => d.UserLogin == LoginTextBox.Text &&
+                        d.UserPassword == PasswordBox.Password && CaptchaInput.Text == CurrentCaptchaCode))
+                    {
+                        var user = Data.PetShopEntities.GetContext().Users
+                            .Where(d => d.UserLogin == LoginTextBox.Text
+                            && d.UserPassword == PasswordBox.Password).FirstOrDefault();
+                        Classes.Manager.CurrentUser = user;
+                        MessageBox.Show("Успех!", "Вы вошли в учетную запись", MessageBoxButton.OK, MessageBoxImage.Information);
+                        FailedAttempts = 0;
+                        CaptchaImage.Visibility = Visibility.Collapsed;
+                        CaptchaInput.Visibility = Visibility.Collapsed;
+                        switch (user.Role.RoleName)
+                        {
+                            case "Администратор":
+                                Classes.Manager.MainFrame.Navigate(new Pages.ProductPage());
+                                break;
+                            case "Клиент":
+                                Classes.Manager.MainFrame.Navigate(new Pages.ProductPage());
+                                break;
+                            case "Менеджер":
+                                Classes.Manager.MainFrame.Navigate(new Pages.ProductPage());
+                                break;
+
+                        }
+                    }
+                    else
+                    {
+                        if (CaptchaInput.Text != CurrentCaptchaCode || !string.IsNullOrEmpty(CaptchaInput.Text))
+                        {
+                            MessageBox.Show("Проверка на робота провалена", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                            FailedAttempts++;
+                            if (FailedAttempts > 1)
+                            {
+                                LoadRandomCaptcha();
+
+                            }
+                        }
+                        else
+                        {
+                            FailedAttempts++;
+                            MessageBox.Show("Неверный логин или пароль ", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                            if (FailedAttempts > 1)
+                            {
+                                LoadRandomCaptcha();
+
+                            }
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {

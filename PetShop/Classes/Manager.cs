@@ -11,7 +11,7 @@ namespace PetShop.Classes
     public static class Manager
     {
         public static Frame MainFrame { get; set; }
-
+        public static Data.Users CurrentUser { get; set; }
         public static void GetImageData()
         {
             var list = Data.PetShopEntities.GetContext().Product.ToList();

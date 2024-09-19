@@ -207,6 +207,12 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Checks\captcha1.jpg" />
+    <Resource Include="Checks\captcha2.jpg" />
+    <Resource Include="Checks\captcha3.jpg" />
+    <Resource Include="Checks\captcha1.png" />
+    <Resource Include="Checks\captcha2.png" />
+    <Resource Include="Checks\captcha3.png" />
     <Content Include="Data\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -219,5 +225,6 @@
     </Content>
     <Resource Include="Resources\picture.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -24,7 +24,13 @@
             <Setter Property="Height" Value="30"></Setter>
             <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
             <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
-            
+
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+        </Style>
+        <Style TargetType="RadioButton">
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
         </Style>
         <Style TargetType="PasswordBox">
             <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
