@@ -22,7 +22,9 @@ namespace PetShop
     {
         public MainWindow()
         {
+
             InitializeComponent();
+            //Classes.Manager.GetImageData();
             Classes.Manager.MainFrame = MainFrame;
             Classes.Manager.MainFrame.Navigate(new Pages.LoginPage());
         }
