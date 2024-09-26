@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Хранилище PetShopModelContainer" CdmEntityContainer="PetShopEntities">
+  <EntityContainerMapping StorageEntityContainer="Хранилище TradeModelContainer" CdmEntityContainer="PetShopEntities">
     <EntitySetMapping Name="City">
-      <EntityTypeMapping TypeName="PetShopModel.City">
+      <EntityTypeMapping TypeName="TradeModel.City">
         <MappingFragment StoreEntitySet="City">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="City1" ColumnName="City" />
@@ -10,7 +10,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Index">
-      <EntityTypeMapping TypeName="PetShopModel.Index">
+      <EntityTypeMapping TypeName="TradeModel.Index">
         <MappingFragment StoreEntitySet="Index">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="PickIndex" ColumnName="PickIndex" />
@@ -18,7 +18,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Order">
-      <EntityTypeMapping TypeName="PetShopModel.Order">
+      <EntityTypeMapping TypeName="TradeModel.Order">
         <MappingFragment StoreEntitySet="Order">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
@@ -31,7 +31,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="OrderProduct">
-      <EntityTypeMapping TypeName="PetShopModel.OrderProduct">
+      <EntityTypeMapping TypeName="TradeModel.OrderProduct">
         <MappingFragment StoreEntitySet="OrderProduct">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="OrderID" ColumnName="OrderID" />
@@ -41,7 +41,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="OrderStatus">
-      <EntityTypeMapping TypeName="PetShopModel.OrderStatus">
+      <EntityTypeMapping TypeName="TradeModel.OrderStatus">
         <MappingFragment StoreEntitySet="OrderStatus">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Status" ColumnName="Status" />
@@ -49,7 +49,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="PickupPoint">
-      <EntityTypeMapping TypeName="PetShopModel.PickupPoint">
+      <EntityTypeMapping TypeName="TradeModel.PickupPoint">
         <MappingFragment StoreEntitySet="PickupPoint">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="IndexID" ColumnName="IndexID" />
@@ -60,7 +60,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Product">
-      <EntityTypeMapping TypeName="PetShopModel.Product">
+      <EntityTypeMapping TypeName="TradeModel.Product">
         <MappingFragment StoreEntitySet="Product">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ProductArticle" ColumnName="ProductArticle" />
@@ -72,6 +72,7 @@
           <ScalarProperty Name="ProductCategoryID" ColumnName="ProductCategoryID" />
           <ScalarProperty Name="ProductDiscount" ColumnName="ProductDiscount" />
           <ScalarProperty Name="ProductQuantityInStock" ColumnName="ProductQuantityInStock" />
+          <ScalarProperty Name="UnitID" ColumnName="UnitID" />
           <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
           <ScalarProperty Name="PhotoName" ColumnName="PhotoName" />
           <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
@@ -79,7 +80,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ProductCategory">
-      <EntityTypeMapping TypeName="PetShopModel.ProductCategory">
+      <EntityTypeMapping TypeName="TradeModel.ProductCategory">
         <MappingFragment StoreEntitySet="ProductCategory">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Category" ColumnName="Category" />
@@ -87,7 +88,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ProductManufacturer">
-      <EntityTypeMapping TypeName="PetShopModel.ProductManufacturer">
+      <EntityTypeMapping TypeName="TradeModel.ProductManufacturer">
         <MappingFragment StoreEntitySet="ProductManufacturer">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
@@ -95,7 +96,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ProductName">
-      <EntityTypeMapping TypeName="PetShopModel.ProductName">
+      <EntityTypeMapping TypeName="TradeModel.ProductName">
         <MappingFragment StoreEntitySet="ProductName">
           <ScalarProperty Name="iD" ColumnName="iD" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -103,7 +104,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ProductTrader">
-      <EntityTypeMapping TypeName="PetShopModel.ProductTrader">
+      <EntityTypeMapping TypeName="TradeModel.ProductTrader">
         <MappingFragment StoreEntitySet="ProductTrader">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Trader" ColumnName="Trader" />
@@ -111,7 +112,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Role">
-      <EntityTypeMapping TypeName="PetShopModel.Role">
+      <EntityTypeMapping TypeName="TradeModel.Role">
         <MappingFragment StoreEntitySet="Role">
           <ScalarProperty Name="RoleID" ColumnName="RoleID" />
           <ScalarProperty Name="RoleName" ColumnName="RoleName" />
@@ -119,7 +120,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="streets">
-      <EntityTypeMapping TypeName="PetShopModel.streets">
+      <EntityTypeMapping TypeName="TradeModel.streets">
         <MappingFragment StoreEntitySet="streets">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="street" ColumnName="street" />
@@ -127,7 +128,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="PetShopModel.sysdiagrams">
+      <EntityTypeMapping TypeName="TradeModel.sysdiagrams">
         <MappingFragment StoreEntitySet="sysdiagrams">
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -137,8 +138,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Units">
+      <EntityTypeMapping TypeName="TradeModel.Units">
+        <MappingFragment StoreEntitySet="Units">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="PetShopModel.Users">
+      <EntityTypeMapping TypeName="TradeModel.Users">
         <MappingFragment StoreEntitySet="Users">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="IDRole" ColumnName="IDRole" />

@@ -47,7 +47,8 @@
             <TextBox x:Name="NameTextBox" Grid.Row="1" Grid.Column="1"
                      Height="30" Width="auto" Margin="10"></TextBox>
             <ComboBox x:Name="CategoryComboBox" Grid.Row="2" Grid.Column="1"
-                      Height="30" Width="auto" Margin="10"></ComboBox>
+                      Height="30" Width="auto" Margin="10"
+                      DisplayMemberPath="Category"></ComboBox>
             <TextBox x:Name="CountTextBox" Grid.Row="3" Grid.Column="1"
                      Height="30" Width="auto" Margin="10"></TextBox>
 

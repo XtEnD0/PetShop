@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="PetShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="TradeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="City">
     <Key>
       <PropertyRef Name="ID" />
@@ -70,23 +70,25 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ProductArticle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="ProductNameID" Type="Int32" Nullable="false" />
-    <Property Name="ProductCost" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <Property Name="ProductDiscountAvailable" Type="Int32" Nullable="false" />
-    <Property Name="ProductManufactureID" Type="Int32" Nullable="false" />
-    <Property Name="ProductTraderID" Type="Int32" Nullable="false" />
-    <Property Name="ProductCategoryID" Type="Int32" Nullable="false" />
-    <Property Name="ProductDiscount" Type="Int32" Nullable="false" />
-    <Property Name="ProductQuantityInStock" Type="Int32" Nullable="false" />
-    <Property Name="ProductDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductArticle" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ProductNameID" Type="Int32" />
+    <Property Name="ProductCost" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="ProductDiscountAvailable" Type="Int32" />
+    <Property Name="ProductManufactureID" Type="Int32" />
+    <Property Name="ProductTraderID" Type="Int32" />
+    <Property Name="ProductCategoryID" Type="Int32" />
+    <Property Name="ProductDiscount" Type="Int32" />
+    <Property Name="ProductQuantityInStock" Type="Int32" />
+    <Property Name="UnitID" Type="Int32" />
+    <Property Name="ProductDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="PhotoName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ProductImage" Type="Binary" MaxLength="Max" FixedLength="false" />
     <NavigationProperty Name="OrderProduct" Relationship="Self.FK_OrderProduct_Product" FromRole="Product" ToRole="OrderProduct" />
-    <NavigationProperty Name="ProductCategory" Relationship="Self.FK_Product_ProductCategoryID" FromRole="Product" ToRole="ProductCategory" />
+    <NavigationProperty Name="ProductCategory" Relationship="Self.FK_Product_ProductCategory" FromRole="Product" ToRole="ProductCategory" />
     <NavigationProperty Name="ProductManufacturer" Relationship="Self.FK_Product_ProductManufacturer" FromRole="Product" ToRole="ProductManufacturer" />
     <NavigationProperty Name="ProductName" Relationship="Self.FK_Product_ProductName" FromRole="Product" ToRole="ProductName" />
     <NavigationProperty Name="ProductTrader" Relationship="Self.FK_Product_ProductTrader" FromRole="Product" ToRole="ProductTrader" />
+    <NavigationProperty Name="Units" Relationship="Self.FK_Product_Units" FromRole="Product" ToRole="Units" />
   </EntityType>
   <EntityType Name="ProductCategory">
     <Key>
@@ -94,7 +96,7 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Product" Relationship="Self.FK_Product_ProductCategoryID" FromRole="ProductCategory" ToRole="Product" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_Product_ProductCategory" FromRole="ProductCategory" ToRole="Product" />
   </EntityType>
   <EntityType Name="ProductManufacturer">
     <Key>
@@ -145,6 +147,14 @@
     <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Units">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UnitName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_Product_Units" FromRole="Units" ToRole="Product" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -256,8 +266,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Product_ProductCategoryID">
-    <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="1" />
+  <Association Name="FK_Product_ProductCategory">
+    <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="0..1" />
     <End Role="Product" Type="Self.Product" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ProductCategory">
@@ -269,7 +279,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Product_ProductManufacturer">
-    <End Role="ProductManufacturer" Type="Self.ProductManufacturer" Multiplicity="1" />
+    <End Role="ProductManufacturer" Type="Self.ProductManufacturer" Multiplicity="0..1" />
     <End Role="Product" Type="Self.Product" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ProductManufacturer">
@@ -281,7 +291,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Product_ProductName">
-    <End Role="ProductName" Type="Self.ProductName" Multiplicity="1" />
+    <End Role="ProductName" Type="Self.ProductName" Multiplicity="0..1" />
     <End Role="Product" Type="Self.Product" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ProductName">
@@ -293,7 +303,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Product_ProductTrader">
-    <End Role="ProductTrader" Type="Self.ProductTrader" Multiplicity="1" />
+    <End Role="ProductTrader" Type="Self.ProductTrader" Multiplicity="0..1" />
     <End Role="Product" Type="Self.Product" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ProductTrader">
@@ -301,6 +311,18 @@
       </Principal>
       <Dependent Role="Product">
         <PropertyRef Name="ProductTraderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Units">
+    <End Role="Units" Type="Self.Units" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Units">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="UnitID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -331,6 +353,7 @@
     <EntitySet Name="Role" EntityType="Self.Role" />
     <EntitySet Name="streets" EntityType="Self.streets" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Units" EntityType="Self.Units" />
     <EntitySet Name="Users" EntityType="Self.Users" />
     <AssociationSet Name="FK_PickupPoint_City" Association="Self.FK_PickupPoint_City">
       <End Role="City" EntitySet="City" />
@@ -364,7 +387,7 @@
       <End Role="streets" EntitySet="streets" />
       <End Role="PickupPoint" EntitySet="PickupPoint" />
     </AssociationSet>
-    <AssociationSet Name="FK_Product_ProductCategoryID" Association="Self.FK_Product_ProductCategoryID">
+    <AssociationSet Name="FK_Product_ProductCategory" Association="Self.FK_Product_ProductCategory">
       <End Role="ProductCategory" EntitySet="ProductCategory" />
       <End Role="Product" EntitySet="Product" />
     </AssociationSet>
@@ -378,6 +401,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_Product_ProductTrader" Association="Self.FK_Product_ProductTrader">
       <End Role="ProductTrader" EntitySet="ProductTrader" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Units" Association="Self.FK_Product_Units">
+      <End Role="Units" EntitySet="Units" />
       <End Role="Product" EntitySet="Product" />
     </AssociationSet>
     <AssociationSet Name="FK_Users_Role" Association="Self.FK_Users_Role">

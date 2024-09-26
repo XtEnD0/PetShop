@@ -76,7 +76,8 @@ namespace PetShop.Pages
                     SupplierTextBox.Text = _currentProduct.ProductTrader.Trader;
                     DescriptionTextBox.Text = _currentProduct.ProductDescription;
 
-
+                    IdTextBox.Text = Data.PetShopEntities.GetContext().Product.Max(d => d.ID + 1).ToString();
+                    CategoryComboBox.SelectedItem = Data.PetShopEntities.GetContext().ProductCategory.Where(d => d.ID == _currentProduct.ProductCategoryID).FirstOrDefault();
 
                 }
 

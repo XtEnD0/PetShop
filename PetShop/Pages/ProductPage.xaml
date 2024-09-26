@@ -15,7 +15,7 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="50"></RowDefinition>
         </Grid.RowDefinitions>
-
+            
         <Label x:Name="CountOfLabel" Grid.Row="0"
                VerticalAlignment="Center"
                Content="123"

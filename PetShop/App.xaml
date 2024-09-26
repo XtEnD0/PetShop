@@ -28,6 +28,8 @@
         </Style>
         <Style TargetType="ComboBox">
             <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
         </Style>
         <Style TargetType="RadioButton">
             <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
