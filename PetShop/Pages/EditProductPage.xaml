@@ -28,7 +28,8 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition Height="150"></RowDefinition>
             </Grid.RowDefinitions>
-            <Label Content="ID:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+            <Label x:Name="IdLabel" 
+                Content="ID:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
             <Label Content="Наименование:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
             <Label Content="Категория:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
             <Label Content="Количество на складе:" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
@@ -62,7 +63,7 @@
                      Grid.RowSpan="4" Height="auto" Width="auto" Margin="10"></TextBox>
 
 
-            <Image Grid.Column="1" Margin="10" Grid.Row="4">
+            <Image x:Name="ProductImage" Grid.Column="1" Margin="10" Grid.Row="4">
                 <Image.Source>
                     <Binding Path="ProductImage">
                         <Binding.TargetNullValue>

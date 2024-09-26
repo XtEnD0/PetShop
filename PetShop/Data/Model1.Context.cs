@@ -15,7 +15,6 @@ namespace PetShop.Data
     
     public partial class PetShopEntities : DbContext
     {
-
         private static PetShopEntities _context;
         public PetShopEntities()
             : base("name=PetShopEntities")
@@ -30,7 +29,6 @@ namespace PetShop.Data
             }
             return _context;
         }
-    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -50,6 +48,7 @@ namespace PetShop.Data
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<streets> streets { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Units> Units { get; set; }
         public virtual DbSet<Users> Users { get; set; }
     }
 }

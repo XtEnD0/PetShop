@@ -22,14 +22,15 @@ namespace PetShop.Data
     
         public int ID { get; set; }
         public string ProductArticle { get; set; }
-        public int ProductNameID { get; set; }
-        public decimal ProductCost { get; set; }
-        public int ProductDiscountAvailable { get; set; }
-        public int ProductManufactureID { get; set; }
-        public int ProductTraderID { get; set; }
-        public int ProductCategoryID { get; set; }
-        public int ProductDiscount { get; set; }
-        public int ProductQuantityInStock { get; set; }
+        public Nullable<int> ProductNameID { get; set; }
+        public Nullable<decimal> ProductCost { get; set; }
+        public Nullable<int> ProductDiscountAvailable { get; set; }
+        public Nullable<int> ProductManufactureID { get; set; }
+        public Nullable<int> ProductTraderID { get; set; }
+        public Nullable<int> ProductCategoryID { get; set; }
+        public Nullable<int> ProductDiscount { get; set; }
+        public Nullable<int> ProductQuantityInStock { get; set; }
+        public Nullable<int> UnitID { get; set; }
         public string ProductDescription { get; set; }
         public string PhotoName { get; set; }
         public byte[] ProductImage { get; set; }
@@ -40,5 +41,6 @@ namespace PetShop.Data
         public virtual ProductManufacturer ProductManufacturer { get; set; }
         public virtual ProductName ProductName { get; set; }
         public virtual ProductTrader ProductTrader { get; set; }
+        public virtual Units Units { get; set; }
     }
 }
