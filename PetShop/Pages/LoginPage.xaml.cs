@@ -27,6 +27,23 @@ namespace PetShop.Pages
         }
         public int FailedAttempts = 0;
 
+        public async void BlockButton(object sender)
+        {
+            Button button = sender as Button;
+            if (button != null)
+                button.IsEnabled = false;
+            for (int i = 10; i >= 0; i--)
+            {
+                button.Content = $"{i}";
+                await Task.Delay(1000);
+                
+            }
+            button.Content = "ВОЙТИ";
+            button.IsEnabled = true;
+        }
+
+
+
         private Dictionary<string, string> captchaCodes = new Dictionary<string, string>
         {
             {"/Checks/captcha1.png", "b16i9"},
@@ -42,7 +59,7 @@ namespace PetShop.Pages
             CaptchaImage.Source = new BitmapImage(new Uri(selectedCaptcha, UriKind.Relative));
             CurrentCaptchaCode = captchaCodes[selectedCaptcha];
         }
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        private void LoginButton_Click(object sender, EventArgs e)
         {
             try
             {
@@ -150,7 +167,7 @@ namespace PetShop.Pages
                             if (FailedAttempts > 1)
                             {
                                 LoadRandomCaptcha();
-
+                                BlockButton(LoginButton);
                             }
                         }
                         else
@@ -160,7 +177,7 @@ namespace PetShop.Pages
                             if (FailedAttempts > 1)
                             {
                                 LoadRandomCaptcha();
-
+                                BlockButton(LoginButton);
                             }
                         }
                     }

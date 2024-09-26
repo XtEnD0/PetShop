@@ -43,7 +43,7 @@
 
 
             <TextBox x:Name="IdTextBox" Grid.Row="0" Grid.Column="1"
-                     Height="30" Width="auto" Margin="10"></TextBox>
+                     Height="30" Width="auto" Margin="10" IsReadOnly="True" IsEnabled="False"></TextBox>
             <TextBox x:Name="NameTextBox" Grid.Row="1" Grid.Column="1"
                      Height="30" Width="auto" Margin="10"></TextBox>
             <ComboBox x:Name="CategoryComboBox" Grid.Row="2" Grid.Column="1"
