@@ -74,6 +74,19 @@
                             <ColumnDefinition Width="150"></ColumnDefinition>
                             <ColumnDefinition Width="150"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Grid.ColumnSpan="4">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ProductQuantityInStock}" Value="0">
+                                            <Setter Property="Background" Value="#99AEAEAE"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+
                         <Image Grid.Column="0" Margin="10">
                             <Image.Source>
                                 <Binding Path="ProductImage">
