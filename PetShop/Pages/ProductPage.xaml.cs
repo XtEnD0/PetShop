@@ -26,12 +26,12 @@ namespace PetShop.Pages
 
             Init();
         }
-
         public void Init()
         {
             try
             {
                 ProductsListView.ItemsSource = Data.PetShopEntities.GetContext().Product.ToList();
+                ProductsListViewAdmin.ItemsSource = Data.PetShopEntities.GetContext().Product.ToList();
 
                 var manufacturerList = Data.PetShopEntities.GetContext().ProductManufacturer.ToList();
                 manufacturerList.Insert(0, new Data.ProductManufacturer { Manufacturer = "Все производители" });
@@ -44,10 +44,23 @@ namespace PetShop.Pages
                     FIOLabel.Content = $"{Classes.Manager.CurrentUser.UserSurname} " +
                         $"{Classes.Manager.CurrentUser.UserName} " +
                         $"{Classes.Manager.CurrentUser.UserPatronymic}";
+
+                    if (Classes.Manager.CurrentUser.IDRole == 1)
+                    {
+                        ProductsListViewAdmin.Visibility = Visibility.Visible;
+                        ProductsListView.Visibility = Visibility.Hidden;
+                    }
+                    else
+                    {
+                        ProductsListViewAdmin.Visibility = Visibility.Hidden;
+                        ProductsListView.Visibility = Visibility.Visible;
+                    }
                 }
                 else
                 {
                     FIOLabel.Visibility = Visibility.Hidden;
+                    ProductsListViewAdmin.Visibility = Visibility.Hidden;
+                    ProductsListView.Visibility = Visibility.Visible;
                 }
                 CountOfLabel.Content = $"{Data.PetShopEntities.GetContext().Product.Count()}/" +
                     $"{Data.PetShopEntities.GetContext().Product.Count()}";
@@ -93,6 +106,7 @@ namespace PetShop.Pages
                     $"{Data.PetShopEntities.GetContext().Product.Count()}";
 
                 ProductsListView.ItemsSource = _products;
+                ProductsListViewAdmin.ItemsSource = _products;
             }
             catch (Exception)
             {
@@ -116,7 +130,7 @@ namespace PetShop.Pages
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            Update();
+            //
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

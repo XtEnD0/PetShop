@@ -15,13 +15,13 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="50"></RowDefinition>
         </Grid.RowDefinitions>
-            
+
         <Label x:Name="CountOfLabel" Grid.Row="0"
                VerticalAlignment="Center"
                Content="123"
                Margin="10,0,0,0"
                HorizontalAlignment="Left">
-            
+
         </Label>
         <Label x:Name="FIOLabel"  Grid.Row ="0" 
                Content="Абрикосов Полислав Кардиганович"
@@ -42,7 +42,7 @@
                      HorizontalAlignment="Left"
                      Margin="170,0,0,0"
                      Checked="SortUpRadioButton_Checked"></RadioButton>
-        
+
         <RadioButton x:Name="SortDownRadioButton"
                      Grid.Row="1"
                      Content="По Убыванию"
@@ -67,7 +67,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
-                        
+
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="150"></ColumnDefinition>
                             <ColumnDefinition Width="400"></ColumnDefinition>
@@ -105,19 +105,67 @@
                         </StackPanel>
                         <TextBlock Grid.Column="2" Text="{Binding ProductQuantityInStock, StringFormat={}В наличии: {0}}"
                                    VerticalAlignment="Center"></TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ListView x:Name="ProductsListViewAdmin"
+                  Grid.Row="2"
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Center"
+                  Margin="10">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"></ColumnDefinition>
+                            <ColumnDefinition Width="400"></ColumnDefinition>
+                            <ColumnDefinition Width="150"></ColumnDefinition>
+                            <ColumnDefinition Width="150"></ColumnDefinition>
+                            <ColumnDefinition Width="150"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Grid.ColumnSpan="4">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ProductQuantityInStock}" Value="0">
+                                            <Setter Property="Background" Value="#99AEAEAE"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+
+                        <Image Grid.Column="0" Margin="10">
+                            <Image.Source>
+                                <Binding Path="ProductImage">
+                                    <Binding.TargetNullValue>
+                                        <BitmapImage UriSource="/Resources/picture.png"></BitmapImage>
+                                    </Binding.TargetNullValue>
+                                </Binding>
+                            </Image.Source>
+                        </Image>
+
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock Text="{Binding ProductName.Name, StringFormat={}Наименование: {0}}"></TextBlock>
+                            <TextBlock Text="{Binding ProductDescription, StringFormat={}Описание товара: {0}}"></TextBlock>
+                            <TextBlock Text="{Binding ProductManufacturer.Manufacturer, StringFormat={}Производитель: {0}}"></TextBlock>
+                            <TextBlock Text="{Binding ProductCost, StringFormat={}Цена: {0}}"></TextBlock>
+                        </StackPanel>
+                        <TextBlock Grid.Column="2" Text="{Binding ProductQuantityInStock, StringFormat={}В наличии: {0}}"
+                                   VerticalAlignment="Center"></TextBlock>
                         <Button x:Name="EditButton" Content="Редактировать"
-                                Click="EditButton_Click" Grid.Column="3" Margin="0,0,120,0"
+                                Click="EditButton_Click" Grid.Column="3"
                                 Height="30" Width="120" FontSize="14"></Button>
                         <Button x:Name="DeleteButton" Content="Удалить" Margin="50,0,0,0"
-                                Click="DeleteButton_Click" Grid.Column="3"
+                                Click="DeleteButton_Click" Grid.Column="4"
                                 Height="30" Width="70" FontSize="14"></Button>
                     </Grid>
                 </DataTemplate>
-                
             </ListView.ItemTemplate>
-
-
         </ListView>
+
         <Button x:Name="BackButton" Content="Назад"
                 Click="BackButton_Click"
                 Grid.Row="3"
