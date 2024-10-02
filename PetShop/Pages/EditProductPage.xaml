@@ -61,7 +61,8 @@
                       Height="30" Margin="10"></TextBox>
             <TextBox x:Name="DescriptionTextBox" Grid.Row="3" Grid.Column="3"
                      TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"
-                     Grid.RowSpan="4" Height="auto" Width="auto" Margin="10"></TextBox>
+                     Grid.RowSpan="4" Height="auto" Width="auto" Margin="10"
+                     AcceptsReturn="True"></TextBox>
 
 
             <Image x:Name="ProductImage" Grid.Column="1" Margin="10" Grid.Row="4">

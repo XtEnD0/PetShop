@@ -20,7 +20,6 @@ namespace PetShop.Pages
     /// </summary>
     public partial class EditProductPage : Page
     {
-
         public string FlagAddOrEdit = "default";
 
         public Data.Product _currentProduct = new Data.Product();
@@ -101,7 +100,78 @@ namespace PetShop.Pages
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                StringBuilder errors = new StringBuilder();
+                if (string.IsNullOrEmpty(NameTextBox.Text))
+                {
+                    errors.AppendLine("Заполните Наименование");
+                }
+                if (CategoryComboBox.SelectedItem == null)
+                {
+                    errors.AppendLine("Выберите категорию");
+                }
+                if (string.IsNullOrEmpty(CountTextBox.Text))
+                {
+                    errors.AppendLine("Заполните количество");
+                }else
+                {
+                    var tryQuantity = Int32.TryParse(CountTextBox.Text, out var resultQuantity);
+                    if (!tryQuantity)
+                    {
+                        errors.AppendLine("Количество - Целое число");
+                    }
+                }
+                if (string.IsNullOrEmpty(UnitTextBox.Text))
+                {
+                    errors.AppendLine("Заполните ед.измерения");
+                }
+                if (string.IsNullOrEmpty(SupplierTextBox.Text))
+                {
+                    errors.AppendLine("Заполните Поставщика");
+                }
+                if (string.IsNullOrEmpty(CostTextBox.Text))
+                {
+                    errors.AppendLine("Заполните стоимость");
 
+                }
+                else
+                {
+                    var tryCost = Decimal.TryParse(CostTextBox.Text, out var resultCost);
+                    if (!tryCost)
+                    {
+                        errors.AppendLine("Стоимость - дробное число");
+
+                    }
+                    else
+                    {
+                        string[] coststr = CostTextBox.Text.Split(',');
+                        if (coststr.Length !=2 || coststr[1].Length != 2)
+                        {
+                            errors.AppendLine("должно быть два символа после запятой");
+                        }
+                       
+                        //2 знака после запятой
+                    }
+                    if (tryCost && resultCost < 0)
+                    {
+                        errors.AppendLine("Стоимость не может быть отрицательной");
+                    }
+                }
+                if (string.IsNullOrEmpty(DescriptionTextBox.Text))
+                {
+                    errors.AppendLine("Заполните описание");
+                }
+                //обработка фото + ограничение 300х200 пикселей
+                if (errors.Length > 0)
+                {
+                    MessageBox.Show(errors.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }
