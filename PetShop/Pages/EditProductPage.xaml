@@ -65,7 +65,7 @@
                      AcceptsReturn="True"></TextBox>
 
 
-            <Image x:Name="ProductImage" Grid.Column="1" Margin="10" Grid.Row="4">
+            <Image x:Name="ProductImage" Grid.Column="1" Margin="10" Grid.Row="4" MouseDown="ProductImage_MouseDown">
                 <Image.Source>
                     <Binding Path="ProductImage">
                         <Binding.TargetNullValue>

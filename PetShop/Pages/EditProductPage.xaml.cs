@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -168,10 +169,86 @@ namespace PetShop.Pages
                     MessageBox.Show(errors.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
+            try
+            {
+                var selectedCategory = CategoryComboBox.SelectedItem as Data.ProductCategory;
+                _currentProduct.ProductCategoryID = Data.PetShopEntities.GetContext().ProductCategory.Where(d => d.ID == selectedCategory.ID).FirstOrDefault().ID;
+                _currentProduct.ProductQuantityInStock = Convert.ToInt32(CountTextBox.Text);
+                _currentProduct.ProductCost = Convert.ToDecimal(CostTextBox.Text);
+                _currentProduct.ProductDescription = DescriptionTextBox.Text;
+                //image
+                //unit
+                var searchUnit = (from item in Data.PetShopEntities.GetContext().Units
+                                  where item.UnitName == UnitTextBox.Text
+                                  select item).FirstOrDefault();
+                if (searchUnit != null)
+                {
+                    _currentProduct.UnitID = searchUnit.ID;
+
+                }
+                else
+                {
+                    Data.Units units = new Data.Units()
+                    {
+                        UnitName = UnitTextBox.Text
+                    };
+                    Data.PetShopEntities.GetContext().Units.Add(units);
+                    Data.PetShopEntities.GetContext().SaveChanges();
+                    _currentProduct.UnitID = units.ID;
+                }
+                //наименование
+                //поставщик
+
+                if (FlagAddOrEdit == "add")
+                {
+                    Data.PetShopEntities.GetContext().Product.Add(_currentProduct);
+                    Data.PetShopEntities.GetContext().SaveChanges();
+                    MessageBox.Show("Успешно добавлено!", "Успех!", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                }
+                else if (FlagAddOrEdit == "edit")
+                {
+                    Data.PetShopEntities.GetContext().SaveChanges();
+                    MessageBox.Show("Успешно сохранено!", "Успех!", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+        
+        private void ProductImage_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.Filter = "Image Files(*.PNG;*.JPG)|*.PNG;*.JPG";
+            if (dlg.ShowDialog() == true)
+            {
+                if (File.Exists(dlg.FileName))
+                {
+                    BitmapImage img = new BitmapImage();
+                    img.BeginInit();
+                    img.UriSource = new Uri(dlg.FileName);
+                    img.EndInit();
+                    if (img.Width>300 || img.Height > 200)
+                    {
+                        MessageBox.Show("Размер изображения не должен превышать 300x200 пикселей", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                }
+            }
+
+
+
+            //Открытие диалогового окна
+            //300х200 максимум
+        }
+
+
     }
 }
