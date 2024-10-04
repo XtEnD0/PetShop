@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -61,8 +62,13 @@ namespace PetShop.Pages
                     CostTextBox.Text = String.Empty;
                     SupplierTextBox.Text = String.Empty;
                     DescriptionTextBox.Text = String.Empty;
-                    ProductImage = null;
 
+                    BitmapImage img = new BitmapImage();
+                    img.BeginInit();
+                    img.UriSource = new Uri("pack://application:,,,/Resources/picrure.png");
+                    img.EndInit();
+
+                    ProductImage.Source = img;
 
                 } else if (FlagAddOrEdit == "edit")
                 {
@@ -86,7 +92,7 @@ namespace PetShop.Pages
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -225,7 +231,7 @@ namespace PetShop.Pages
         
         private void ProductImage_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            OpenFileDialog dlg = new OpenFileDialog();
             dlg.Filter = "Image Files(*.PNG;*.JPG)|*.PNG;*.JPG";
             if (dlg.ShowDialog() == true)
             {
@@ -235,18 +241,16 @@ namespace PetShop.Pages
                     img.BeginInit();
                     img.UriSource = new Uri(dlg.FileName);
                     img.EndInit();
-                    if (img.Width>300 || img.Height > 200)
+                    if (img.Width > 301 || img.Height > 201)
                     {
                         MessageBox.Show("Размер изображения не должен превышать 300x200 пикселей", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
                         return;
                     }
+
+                    ProductImage.Source = img;
                 }
             }
 
-
-
-            //Открытие диалогового окна
-            //300х200 максимум
         }
 
 
