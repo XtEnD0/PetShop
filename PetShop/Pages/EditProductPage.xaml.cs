@@ -188,6 +188,15 @@ namespace PetShop.Pages
                 _currentProduct.ProductCost = Convert.ToDecimal(CostTextBox.Text);
                 _currentProduct.ProductDescription = DescriptionTextBox.Text;
                 //image
+                var list = Data.PetShopEntities.GetContext().Product.ToList();
+                foreach (var item in list)
+                {
+                    string path = Directory.GetCurrentDirectory() + @"\img\" + item.PhotoName;
+                    if (File.Exists(path))
+                    {
+                        item.ProductImage = File.ReadAllBytes(path);
+                    }
+                }
                 //unit
                 var searchUnit = (from item in Data.PetShopEntities.GetContext().Units
                                   where item.UnitName == UnitTextBox.Text
@@ -208,7 +217,10 @@ namespace PetShop.Pages
                     _currentProduct.UnitID = units.ID;
                 }
                 //наименование
+                _currentProduct.ProductName.Name = NameTextBox.Text;
                 //поставщик
+                _currentProduct.ProductTrader.Trader = SupplierTextBox.Text;
+
 
                 if (FlagAddOrEdit == "add")
                 {

@@ -47,3 +47,34 @@ C:\Users\lisav\Desktop\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\Pages\ProductP
 C:\Users\lisav\Desktop\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\Pages\ProductPage.baml
 C:\Users\lisav\Desktop\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\Pages\EditProductPage.g.cs
 C:\Users\lisav\Desktop\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\Pages\EditProductPage.baml
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\bin\Debug\PetShop.exe.config
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\bin\Debug\PetShop.exe
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\bin\Debug\PetShop.pdb
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\bin\Debug\EntityFramework.dll
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\bin\Debug\EntityFramework.SqlServer.dll
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\bin\Debug\EntityFramework.xml
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\bin\Debug\EntityFramework.SqlServer.xml
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\bin\Debug\ru\EntityFramework.resources.dll
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\PetShop.csproj.AssemblyReference.cache
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\MainWindow.g.cs
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\Pages\EditProductPage.g.cs
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\Pages\LoginPage.g.cs
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\Pages\Page1.g.cs
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\Pages\ProductPage.g.cs
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\App.g.cs
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\PetShop_Content.g.cs
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\PetShop_MarkupCompile.cache
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\PetShop_MarkupCompile.lref
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\App.baml
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\MainWindow.baml
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\Pages\EditProductPage.baml
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\Pages\LoginPage.baml
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\Pages\Page1.baml
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\Pages\ProductPage.baml
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\PetShop.g.resources
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\PetShop.Properties.Resources.resources
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\PetShop.csproj.GenerateResource.cache
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\PetShop.csproj.CoreCompileInputs.cache
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\PetShop.csproj.CopyComplete
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\PetShop.exe
+D:\4 КУРС\MIKA 1st work LAST\MIKA\PetShopMIKA\PetShop\PetShop\obj\Debug\PetShop.pdb

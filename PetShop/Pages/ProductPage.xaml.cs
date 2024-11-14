@@ -52,12 +52,14 @@ namespace PetShop.Pages
                     }
                     else
                     {
+                        AddButton.Visibility = Visibility.Hidden;
                         ProductsListViewAdmin.Visibility = Visibility.Hidden;
                         ProductsListView.Visibility = Visibility.Visible;
                     }
                 }
                 else
                 {
+                    AddButton.Visibility = Visibility.Hidden;
                     FIOLabel.Visibility = Visibility.Hidden;
                     ProductsListViewAdmin.Visibility = Visibility.Hidden;
                     ProductsListView.Visibility = Visibility.Visible;
